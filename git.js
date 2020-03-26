@@ -11,9 +11,17 @@ const section = document.getElementById("section");
  * -----------------------------------------------------------------------------
  */
 
-const createArticle = (identifiant, legende, terme, definition ) => {
+const newArticle = (
+	identifiant,
+	titre,
+	legende,
+	terme,
+	definition,
+	backgroundColor = "#333"
+) => {
 	
 	const article = document.createElement("article");
+	const h2 = document.createElement("h2");
 	const fieldset = document.createElement("fieldset");
 	const legend = document.createElement("legend");
 	const dl = document.createElement("dl");
@@ -21,51 +29,39 @@ const createArticle = (identifiant, legende, terme, definition ) => {
 	const dd = document.createElement("dd");
 
 	article.setAttribute("id", identifiant);
+	article.style.backgroundColor = backgroundColor;
+	article.style.position = "relative";
+	article.style.margin = "20px";
+	article.style.padding = "50px";
+
+	h2.innerText = titre;
+	h2.style.position = "absolute";
+	h2.style.fontSize = "25px";
+	h2.style.right = "-10px";
+	h2.style.top = "50px";
+	h2.style.transform = "rotate(90deg)";
+	h2.style.fontWeight = "700";
+	h2.style.color = "tan";
+
 	legend.innerText = legende;
+	legend.style.color = "darkgoldenrod";
+	legend.style.padding = "0 20px";
+	legend.style.letterSpacing = "2px";
+
 	dt.innerText = terme;
+	dt.style.fontSize = "18px"
+	dt.style.fontWeight = "300";
+	dt.style.color = "teal";
+
 	dd.innerText = definition;
-	
-	article.append(fieldset);
+	dd.style.fontSize = "15px";
+	dd.style.fontWeight = "300";
+	dd.style.color = "lightslategrey";
+
+	article.append(h2, fieldset);
 	fieldset.append(legend, dl);
 	dl.append(dt, dd);
 
 	return article;
 }
 
-
-/**
- * -----------------------------------------------------------------------------
- * VERSION
- * -----------------------------------------------------------------------------
- */
-const version = createArticle(
-	"version",
-	"Quelle version est installée sur ma machine",
-	"git --version",
-	"Permet de connaître la version de git qui est installé sur l'ordinateur."
-)
-section.append( version );	
-
-/**
- * -----------------------------------------------------------------------------
- * CONFIGURATION
- * -----------------------------------------------------------------------------
- */
-const configUserName = createArticle(
-	"configUserName",
-	"Définir le nom et le prénom pour tous les utilisateurs",
-	"git config --global user.name 'John Doe'",
-	"Permet de définir son nom et son prénom pour tous les utilisateurs de la même machine." 
-)
-section.appendChild( configUserName );
-
-
-/**
-git config --system user.name "Alain Guillon"		Pour d�finir son nom et pr�nom pour tout les users
-
-git config --global user.email "zyrass@outlook.fr"	Pour d�finir son email globalement
-git config --global user.email "zyrass@outlook.fr"	Pour d�finir son email pour tous les users
-
-git config user.name					Pour voir le nom enregistr�
-git config user.email					Pour voir l'email enregistr� :
-*/
