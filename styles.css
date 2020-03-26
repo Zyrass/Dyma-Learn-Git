@@ -1,19 +1,82 @@
 /* Style générale  */
 body {
-  background-color: #222;
+  background-color: #ddd;
+}
+
+h1 {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #222;
+  text-align: center;
+}
+h1 small {
+  font-weight: 300;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 section {
+  padding-top: 100px;
+  padding-bottom: 50px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row wrap;
   justify-content: space-evenly;
-  align-items: center;
+  margin: 20px;
+  width: 90%;
+  border-radius: 3px;
+  padding-top: 50px;
+  filter: sepia(100%);
+  transition: all .8s linear;
+  background-color: #222;
+}
+section:hover {
+  filter: sepia(10%);
+  transition: all .8s linear;
+  box-shadow: 0 0 5px #eee;
+}
+article {
+  margin: 10px 0;
+  min-width: 45%;
+  max-width: 100%;
+  position: relative;
 }
 
-article {
-  position: relative;
-  margin: 20px;
-  padding: 50px;
+h2 {
+  position: absolute;
+  top: 0px;
+  color: chocolate;
+  font-weight: 300;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 20px 20px 0 0;
+}
 
+h3 {
+  color: chocolate;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+legend {
+  color: tan;
+  padding: 0 20px;
+  letter-spacing: 2px;
+}
+
+dt {
+  font-size: 16px;
+  color: lime;
+  font-weight: 300;
+  padding-bottom: 5px;
+}
+
+dd {
+  font-size: 16px;
+  color: lightslategray;
+  font-weight: 300;
 }

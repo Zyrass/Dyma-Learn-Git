@@ -1,64 +1,63 @@
-/**
- * -----------------------------------------------------------------------------
- * Sélection de la section regroupant tous mes futurs articles.
- * -----------------------------------------------------------------------------
- */
-const section = document.getElementById("section");
+"use-strict"
+
+// Sélection du main regroupant toutes mes futures sections.
+const main = document.getElementById("main");
 
 /**
- * -----------------------------------------------------------------------------
- * Création d'une fonction qui me permet de créer un article complet sur le dom.
- * -----------------------------------------------------------------------------
+ * FR : Création d'une fonction qui me permet de créer une nouvelle section
+ * @param { String } identifiantSection 
+ * @param { String } titre 
  */
+const newSection = ( identifiantSection, titre ) => {
 
-const newArticle = (
-	identifiant,
-	titre,
-	legende,
-	terme,
-	definition,
-	backgroundColor = "#333"
-) => {
-	
-	const article = document.createElement("article");
+	const section = document.createElement("section");
 	const h2 = document.createElement("h2");
+
+	section.classList.add("section__container");
+	section.setAttribute("id", "section__" + identifiantSection);
+
+	h2.innerText = titre;
+
+	section.appendChild( h2 );
+	main.appendChild( section );
+
+	return section;
+}
+
+/**
+ * FR : Vous permet de créer un article sur le DOM
+ * @param { String } identifiantSection
+ * @param { Number } identifiantArticle
+ * @param { String } legende 
+ * @param { String } terme 
+ * @param { String } definition
+ */
+const newArticle = ( 
+	identifiantSection, identifiantArticle, legende, terme, definition 
+) => {
+
+	const sectionID = document.getElementById(identifiantSection);
+	const article = document.createElement("article");
 	const fieldset = document.createElement("fieldset");
 	const legend = document.createElement("legend");
 	const dl = document.createElement("dl");
 	const dt = document.createElement("dt");
 	const dd = document.createElement("dd");
-
-	article.setAttribute("id", identifiant);
-	article.style.backgroundColor = backgroundColor;
-
-	h2.innerText = titre;
-	h2.style.position = "absolute";
-	h2.style.fontSize = "25px";
-	h2.style.right = "-10px";
-	h2.style.top = "50px";
-	h2.style.transform = "rotate(90deg)";
-	h2.style.fontWeight = "700";
-	h2.style.color = "tan";
+	
+	article.classList.add("article__container");
+	article.setAttribute(
+		"id", "article__" + identifiantArticle + "__" + identifiantSection
+	);
 
 	legend.innerText = legende;
-	legend.style.color = "darkgoldenrod";
-	legend.style.padding = "0 20px";
-	legend.style.letterSpacing = "2px";
-
 	dt.innerText = terme;
-	dt.style.fontSize = "18px"
-	dt.style.fontWeight = "300";
-	dt.style.color = "teal";
-
 	dd.innerText = definition;
-	dd.style.fontSize = "15px";
-	dd.style.fontWeight = "300";
-	dd.style.color = "lightslategrey";
 
-	article.append(h2, fieldset);
+	article.appendChild( fieldset);
 	fieldset.append(legend, dl);
-	dl.append(dt, dd);
+	dl.append(dt, dd);	
+	
+	sectionID.append(article);
 
 	return article;
 }
-

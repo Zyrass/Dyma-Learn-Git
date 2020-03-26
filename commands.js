@@ -3,133 +3,115 @@
  * VERSION
  * -----------------------------------------------------------------------------
  */
-const version = newArticle(
-	"version",
-	"version",
+const sectionVersion = newSection("version", "git --version");
+const articleVersion = newArticle(
+	"section__version",
+	1,
 	"Comment connaître la version de git qui est installée sur l'ordinateur ?",
 	"git --version",
 	"Permet de connaître la version de git qui est installé sur l'ordinateur."
-)
-section.appendChild( version );	
+);
+sectionVersion.append(articleVersion);
+main.appendChild( sectionVersion );	
 
 /**
  * -----------------------------------------------------------------------------
  * CONFIGURATION
  * -----------------------------------------------------------------------------
  */
-const configUserName = newArticle(
-	"configUserName",
-	"config",
-	"Comment définir le nom et le prénom pour tous les utilisateurs issu du même ordinateur ?",
+const sectionConfig = newSection("config", "git config ...");
+
+const articleConfigUserName = newArticle(
+	"section__config",
+	2,
+	"Définir le nom et le prénom pour tous les utilisateurs issu du même ordinateur ?",
 	"git config --global user.name 'John Doe'",
-	"Permet de définir son nom et son prénom pour tous les utilisateurs de la même machine.",
-	"#eee"
-)
-const configUserEmail = newArticle(
-	"configUserEmail",
-	"config",
-	"Comment définir l'email pour tous les utilisateurs du même ordinateur ?",
+	"Permet de définir son nom et son prénom pour tous les utilisateurs de la même machine."
+);
+const articleConfigUserEmail = newArticle(
+	"section__config",
+	3,
+	"Définir l'email pour tous les utilisateurs du même ordinateur ?",
 	"git config --global user.email 'john-doe@fake-email.fr'",
 	"Permet de définir l'email pour tous les utilisateurs de la même machine.",
-	"#eee"
-)
-const configGetUserName = newArticle(
-	"configGetUserName",
-	"config",
-	"Comment afficher le nom d'utilisateur qui a été enregistré dans git ?",
+); 
+const articleConfigShowUserName = newArticle(
+	"section__config",
+	4,
+	"Afficher le nom d'utilisateur qui a été enregistré dans git ?",
 	"git config user.name",
 	"Permet d'afficher le nom d'utilisateur pré-enregistré.",
-	"#eee"
-)
-const configGetUserEmail = newArticle(
-	"configGetUserEmail",
-	"config",
-	"Comment afficher l'email qui a été enregistré dans git ?",
+);
+
+const articleConfigShowUserEmail = newArticle(
+	"section__config",
+	5,
+	"Afficher l'email qui a été enregistré dans git ?",
 	"git config user.email",
 	"Permet d'afficher l'email qui a été pré-enregistré.",
-	"#eee"
-)
+);
 
-section.append(
-	// Création
-	configUserName, 
-	configUserEmail, 
-	// Visualisation
-	configGetUserName, 
-	configGetUserEmail
-)
+sectionConfig.append( 
+	articleConfigUserName, 
+	articleConfigUserEmail, 
+	articleConfigShowUserName, 
+	articleConfigShowUserEmail
+);
+main.append(sectionConfig);
 
 /**
  * -----------------------------------------------------------------------------
  * INITIALISATION
  * -----------------------------------------------------------------------------
  */
-const init = newArticle(
-	"init",
-	"init",
+const sectionInit = newSection( "init", "git init" );
+const articleInit = newArticle(
+	"section__init",
+	6,
 	"Comment initialiser un nouveau répertoire git sur sa machine ?",
 	"git init",
 	"Permet d'initialiser un répertoire git afin d'avoir accès à d'innombrable commande git qui nous faciliterons grandement la vie."
-)
-section.append( init );
+);
+sectionInit.appendChild( articleInit );
+main.appendChild( sectionInit );
 
 /**
  * -----------------------------------------------------------------------------
  * INITIALISATION D'UN FICHIER POUR IGNORER DES FICHIERS
  * -----------------------------------------------------------------------------
  */
-const ignore = newArticle(
-	"ignore",
-	".gitignore",
+const sectionIgnore = newSection( "ignore", ".gitignore" );
+const articleIgnore = newArticle(
+	"section__ignore",
+	7,
 	"Comment éviter de partager des fichiers qui peuvent être senssible ?",
 	".gitignore",
-	"Permet de créer un fichier caché qui sera interpréter par git afin, selon son contenu d'éviter de propager des données confidentiels ou bien de ne pas suivre des dossiers inutile",
-	"#eee"
+	"Permet de créer un fichier caché qui sera interpréter par git afin, selon son contenu d'éviter de propager des données confidentiels ou bien de ne pas suivre des dossiers inutile"
 )
-
-// 
-// touch .gitignore
-
-section.append( ignore );
-
-const articleIgnore = document.getElementById("ignore");
+const exempleContentGitIgnore = document.getElementById(
+	"article__7__section__ignore"
+)
+const h3 = document.createElement( "h3" );
 const p = document.createElement("p");
-const pre = document.createElement("pre");
+const dl = document.createElement("dl");
 
-p.innerHTML = "Information complémentaire pour créer un fichier en ligne de commande : <mark>touch .gitignore</mark>";
-p.style.fontSize = "14px";
-p.style.color = "crimson"
+h3.innerText = "Exemple d'un contenu d'un fichier .gitignore";
+dl.innerHTML = `<dt>node_modules</dt>
+		<dd>On ne suivra pas le dossier node_modules</dd>
+	<dt>unRepertoire/*.txt</dt>
+		<dd>Dans unRepertoire on ne suivra pas les .txt</dd>
+	<dt>unAutreRepertoire/**/*.md</dt>
+		<dd>Dans un dossier et ces sous-dossiers, on ne suivra pas les .md (markdown)</dd>
+	<dt>/.bundle</dt>
+		<dd>ignore tous les .bundle</dd>
+	<dt>/log/*</dt>
+		<dd>ignore tous les fichiers dans le dossier log</dd>
+	<dt>/tmp</dt>
+		<dd>ignore le dossier tmp (dossier temporaire)</dd>`
+exempleContentGitIgnore.append(h3, dl);
 
-pre.innerHTML = `<code>
------------------------------------------------
-EXEMPLE D'UN CONTENU D'UN FICHIER .gitignore
------------------------------------------------
-node_modules
-unRepertoire/*.txt
-unAutreRepertoire/**/*.md
-/.bundle 
-/log/* 
-/tmp
------------------------------------------------
-Explication :
------------------------------------------------
-1 - On ne suivra pas le dossier node_modules
-2 - Dans unRepertoire on ne suivra pas les .txt
-3 - Dans un dossier et ces sous-dossiers,  
-    on ne suivra pas les .md (markdown)
-4 - ignore tous les .bundle
-5 - ignore tous les fichiers dans le dossier log
-6 - ignore le dossier tmp (dossier temporaire)
------------------------------------------------</code>`;
-
-
-pre.style.color = "lightslategrey";
-
-articleIgnore.append(p, pre);
-
-
-
-
+articleIgnore.appendChild(exempleContentGitIgnore);
+main.appendChild( sectionIgnore );
 
 
 
