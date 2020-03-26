@@ -2,3 +2,18 @@
 body {
   background-color: #222;
 }
+
+section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+article {
+  position: relative;
+  margin: 20px;
+  padding: 50px;
+
+}

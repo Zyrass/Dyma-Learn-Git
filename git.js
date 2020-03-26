@@ -30,9 +30,6 @@ const newArticle = (
 
 	article.setAttribute("id", identifiant);
 	article.style.backgroundColor = backgroundColor;
-	article.style.position = "relative";
-	article.style.margin = "20px";
-	article.style.padding = "50px";
 
 	h2.innerText = titre;
 	h2.style.position = "absolute";

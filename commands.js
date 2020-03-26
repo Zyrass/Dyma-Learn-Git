@@ -100,16 +100,28 @@ p.innerHTML = "Information complémentaire pour créer un fichier en ligne de co
 p.style.fontSize = "14px";
 p.style.color = "crimson"
 
-pre.innerHTML = `<pre>
-----------------------------------------------------------------------------
-		EXEMPLE D'UN CONTENU D'UN FICHIER .gitignore
-----------------------------------------------------------------------------
-node_modules			// On ne suivra pas le dossiers node_modules
-unRepertoire/*.txt 		// Dans unRepertoire on ne suivra pas les .txt
-unAutreRepertoire/**/*.md 	// Dans 1 folder et ces sous-folder on ne suivra pas les .md
-/.bundle			// ignore tous les .bundle
-/log/*				// ignore tous les fichiers dans le dossier log
-/tmp 				// ignore le dossier temporaire tmp</pre>`;
+pre.innerHTML = `<code>
+-----------------------------------------------
+EXEMPLE D'UN CONTENU D'UN FICHIER .gitignore
+-----------------------------------------------
+node_modules
+unRepertoire/*.txt
+unAutreRepertoire/**/*.md
+/.bundle 
+/log/* 
+/tmp
+-----------------------------------------------
+Explication :
+-----------------------------------------------
+1 - On ne suivra pas le dossier node_modules
+2 - Dans unRepertoire on ne suivra pas les .txt
+3 - Dans un dossier et ces sous-dossiers,  
+    on ne suivra pas les .md (markdown)
+4 - ignore tous les .bundle
+5 - ignore tous les fichiers dans le dossier log
+6 - ignore le dossier tmp (dossier temporaire)
+-----------------------------------------------</code>`;
+
 
 pre.style.color = "lightslategrey";
 
