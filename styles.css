@@ -1,0 +1,13 @@
+article {
+  margin: 20px;
+}
+
+dt {
+  font-weight: 700;
+  color: darkblue;
+}
+
+dd {
+  font-weight: 300;
+  color: grey;
+}
