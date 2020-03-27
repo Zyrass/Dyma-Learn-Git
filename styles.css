@@ -30,7 +30,7 @@ section {
   width: 90%;
   border-radius: 3px;
   padding-top: 50px;
-  filter: sepia(100%);
+  filter: sepia(70%);
   transition: all .8s linear;
   background-color: #222;
 }
@@ -44,6 +44,10 @@ article {
   min-width: 45%;
   max-width: 100%;
   position: relative;
+}
+
+fieldset {
+  margin: 0px 50px;
 }
 
 h2 {
@@ -79,4 +83,11 @@ dd {
   font-size: 16px;
   color: lightslategray;
   font-weight: 300;
+}
+
+mark {
+  padding: 4px;
+  border-radius: 3px;
+  text-align: center;
+  background-color: tan;
 }

@@ -87,12 +87,11 @@ const articleIgnore = newArticle(
 	"Comment éviter de partager des fichiers qui peuvent être senssible ?",
 	".gitignore",
 	"Permet de créer un fichier caché qui sera interpréter par git afin, selon son contenu d'éviter de propager des données confidentiels ou bien de ne pas suivre des dossiers inutile"
-)
+);
 const exempleContentGitIgnore = document.getElementById(
-	"article__7__section__ignore"
-)
+	"article__7__fieldset"
+);
 const h3 = document.createElement( "h3" );
-const p = document.createElement("p");
 const dl = document.createElement("dl");
 
 h3.innerText = "Exemple d'un contenu d'un fichier .gitignore";
@@ -114,18 +113,38 @@ articleIgnore.appendChild(exempleContentGitIgnore);
 main.appendChild( sectionIgnore );
 
 
+/**
+ * -----------------------------------------------------------------------------
+ * COMMAND DE BASE
+ * -----------------------------------------------------------------------------
+ */
+const sectionGitBase = newSection( "base", "Commande de base" );
+const articleGitStatus = newArticle(
+	"section__base",
+	8,
+	"Connaître l'état même d'un repository",
+	"git status",
+	"Cette commande permet de savoir l'état de notre répertoire de travail.<br />Si le résultat est affiché en rouge, c'est qu'il faut ajouter les fichiers en s'assurant qu'il n'entrave en rien l'application.<br />Si c'est en vert c'est que les fichiers ont été ajouté et qu'il faut tout simplement ajouter un commentaire de préférence le plus précis possible. (Commit)"
+);
 
+const articleGitAdd = newArticle(
+	"section__base",
+	9,
+	"Ajouter des fichier dans la zone appelé 'Stagging Area'",
+	"git add nom_du_fichier.extenssion",
+	"Cette commande permet d'ajouter des fichiers pour que git les track.<br />Une option existe avec le <mark>' . '</mark> à la fin en lieu et place du nom du fichier soit : <mark>git add .</mark><br />Le point nous permets d'ajouter tous les fichiers tracké directement (Ceux qui apparaissent en rouge même si ils sont supprimé)"
+);
 
+const articleGitDiff = newArticle(
+	"section__base",
+	10,
+	"Connaître la différence qu'il y a entre un fichier modifié son original",
+	"git diff exemple.html",
+	"Cette commande permet de voir les changements apporté au notre fichier exemple.html en le comparant au même fichier qu'on avait au départ.<br /> Ahhh le versionning c'est trop pratique !!"
+)
 
-
-
-
-
-
-
-
-
-
+sectionGitBase.append( articleGitStatus, articleGitAdd, articleGitDiff );
+main.appendChild( sectionGitBase );
 
 
 
@@ -136,13 +155,6 @@ main.appendChild( sectionIgnore );
 Note personnel des cours suivis sur Dyma et ailleurs (plus bas)
 
 
-
---------------------------------------------------------------------------------COMMAND DE BASE
---------------------------------------------------------------------------------
-git status						conna�tre le statut du d�p�t
-
-git add nomDuFichier.sonExtenssion			ajouter les fichiers pour que git les track
-git add .						ajoute tous les fichiers
 
 git diff test.html					Voir les changements qui ont �t� apport� 								pour seulement un fichier 
 							(exemple ici avec test.html)
@@ -158,6 +170,19 @@ git commit -am "Un autre message pr�cis"		avec l'option -a on �vite de refai
 
 
 git commit -m "Un titre d'un message" -m "le corps du message"
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --------------------------------------------------------------------------------
 CONNAITRE L'EMPLACEMENT DES FICHIERS QUI NE SONT PAS ENCORE COMMIT

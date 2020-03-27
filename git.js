@@ -49,9 +49,13 @@ const newArticle = (
 		"id", "article__" + identifiantArticle + "__" + identifiantSection
 	);
 
+	fieldset.setAttribute(
+		"id", "article__" + identifiantArticle + "__fieldset"
+	)
+
 	legend.innerText = legende;
 	dt.innerText = terme;
-	dd.innerText = definition;
+	dd.innerHTML = definition;
 
 	article.appendChild( fieldset);
 	fieldset.append(legend, dl);
